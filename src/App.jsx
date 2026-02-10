@@ -27,9 +27,9 @@ function App() {
         <Route path="/study-zone" element={<CourseList courses={coursesData} />} />
         <Route path="/study-zone/:id" element={<CourseDetail courses={coursesData} />} />
         <Route path="/courseQuiz" element={<InterestQuiz courses={coursesData} />} />
-        <Route path="/focus-zone" element={<Streamlit port={8501} page="1_Meditation_Coach" title="Focus Zone - Meditation Coach" />} />
-        <Route path="/destress-zone" element={<Streamlit port={8501} page="2_Stress_Detection" title="Destress Zone - Stress Detection" />} />
-        <Route path="/serenity-zone" element={<Streamlit port={8501} page="3_Wellness_Chatbot" title="Serenity Zone - Wellness Chatbot" />} />
+        <Route path="/focus-zone" element={<Streamlit port={8501} page="Meditation_Coach" title="Focus Zone - Meditation Coach" />} />
+        <Route path="/destress-zone" element={<Streamlit port={8501} page="Stress_Detection" title="Destress Zone - Stress Detection" />} />
+        <Route path="/serenity-zone" element={<Streamlit port={8501} page="Wellness_Chatbot" title="Serenity Zone - Wellness Chatbot" />} />
         <Route path="/vr-speech" element={<VRSpeechTrainer />} />
 
         <Route path="/profile" element={<ProfilePage />} />
