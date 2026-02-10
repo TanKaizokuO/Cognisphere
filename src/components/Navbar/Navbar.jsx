@@ -113,43 +113,31 @@ const Navbar = () => {
 
           {/* User avatar */}
           <div className="user-menu-container">
-            {isAuthenticated ? (
-              <Button className="user-avatar" onClick={toggleUserMenu}>
-                <img
-                  src={user?.picture || "https://via.placeholder.com/40"}
-                  alt="User"
-                  className="user-avatar"
-                />
-              </Button>
-            ) : (
-              <Button
-                // className="user-avatar"
-                onClick={loginWithRedirect}
-                sx={{
-                  backgroundColor: "rgb(9, 238, 9)",
-                  color: "white",
-                  fontFamily: "zen",
-                  textTransform: "none",
-                  fontWeight: "800",
-                }}
-              >
-                Login
-              </Button>
+            {isAuthenticated && (
+              <>
+                <Button className="user-avatar" onClick={toggleUserMenu}>
+                  <img
+                    src={user?.picture || "https://via.placeholder.com/40"}
+                    alt="User"
+                    className="user-avatar"
+                  />
+                </Button>
+                {/* Dropdown for user settings */}
+                <div className={`user-dropdown ${userMenuOpen ? "open" : ""}`}>
+                  {settings.map((setting) =>
+                    setting === "Logout" ? (
+                      <button key={setting} className="dropdown-item" onClick={() => logout({ returnTo: window.location.origin })}>
+                        {setting}
+                      </button>
+                    ) : (
+                      <a key={setting} href={`/${setting.toLowerCase()}`} className="dropdown-item">
+                        {setting}
+                      </a>
+                    )
+                  )}
+                </div>
+              </>
             )}
-            {/* Dropdown for user settings */}
-            <div className={`user-dropdown ${userMenuOpen ? "open" : ""}`}>
-              {settings.map((setting) =>
-                setting === "Logout" ? (
-                  <button key={setting} className="dropdown-item" onClick={() => logout({ returnTo: window.location.origin })}>
-                    {setting}
-                  </button>
-                ) : (
-                  <a key={setting} href={`/${setting.toLowerCase()}`} className="dropdown-item">
-                    {setting}
-                  </a>
-                )
-              )}
-            </div>
           </div>
         </div>
       </div>
