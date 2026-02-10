@@ -5,7 +5,7 @@ import "./ReviewMarquee.css";
 const reviews = [
   {
     id: 1,
-    name: "Alex Johnson",
+    name: "Arjun Sharma",
     role: "Product Designer",
     content:
       "This product has completely transformed our workflow. The interface is intuitive and the performance is outstanding.",
@@ -13,14 +13,14 @@ const reviews = [
   },
   {
     id: 2,
-    name: "Sarah Williams",
+    name: "Priya Iyer",
     role: "Marketing Director",
     content: "Incredibly easy to use with powerful features. The support team is also very responsive and helpful.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Michael Chen",
+    name: "Rahul Kapoor",
     role: "Developer",
     content:
       "The API documentation is comprehensive and the integration was seamless. Highly recommended for any tech stack.",
@@ -28,7 +28,7 @@ const reviews = [
   },
   {
     id: 4,
-    name: "Emma Rodriguez",
+    name: "Ananya Reddy",
     role: "UX Researcher",
     content:
       "The attention to detail in the user experience is remarkable. Our users have reported a significant improvement in satisfaction.",
@@ -36,14 +36,14 @@ const reviews = [
   },
   {
     id: 5,
-    name: "David Kim",
+    name: "Vikram Patel",
     role: "Startup Founder",
     content: "This solution helped us scale quickly without compromising on quality. Worth every penny.",
     rating: 5,
   },
   {
     id: 6,
-    name: "Lisa Thompson",
+    name: "Meera Desai",
     role: "Project Manager",
     content: "The collaboration features have made our remote work much more efficient. The learning curve is minimal.",
     rating: 4,
