@@ -2,7 +2,7 @@
   width: 280px;
   height: 100%;
   background-color: #181825;
-  border-right: 1px solid rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, width 0.3s ease;
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-header h1 {
@@ -32,7 +32,7 @@
 }
 
 .close-sidebar {
-  color: #666;
+  color: #a6adc8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +42,7 @@
 }
 
 .close-sidebar:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-content {
@@ -64,14 +64,14 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #666;
+  color: #bac2de;
   margin: 0;
 }
 
 .sidebar-section p {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #666;
+  color: #a6adc8;
 }
 
 .mode-buttons {
@@ -87,17 +87,17 @@
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 0.95rem;
-  color: #333;
+  color: #cdd6f4;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .mode-button:hover {
-  background-color: rgba(74, 107, 175, 0.1);
+  background-color: rgba(137, 180, 250, 0.1);
 }
 
 .mode-button.active {
-  background-color: #4a6baf;
-  color: #cdd6f4;
+  background-color: #89b4fa;
+  color: #1e1e2e;
 }
 
 .action-button {
@@ -107,23 +107,23 @@
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 0.95rem;
-  color: #333;
+  color: #cdd6f4;
   transition: background-color 0.2s;
 }
 
 .action-button:hover {
-  background-color: rgba(74, 107, 175, 0.1);
+  background-color: rgba(137, 180, 250, 0.1);
 }
 
 .sidebar-footer {
   padding: 15px 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
 .sidebar-footer p {
   font-size: 0.8rem;
-  color: #999;
+  color: #6c7086;
 }
 
 @media (max-width: 768px) {

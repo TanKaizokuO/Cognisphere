@@ -17,8 +17,8 @@
 
 .bot-message {
   align-self: flex-start;
-  background-color: #181825;
-  color: #333;
+  background-color: #313244;
+  color: #cdd6f4;
   border-bottom-left-radius: 4px;
 }
 
@@ -34,7 +34,7 @@
 
 .message-timestamp {
   font-size: 0.7rem;
-  color: #666;
+  color: #a6adc8;
   margin-top: 6px;
   text-align: right;
   opacity: 0.8;
@@ -52,31 +52,31 @@
 
 .search-results-container h4 {
   margin: 0 0 10px 0;
-  color: #4a6baf;
+  color: #89b4fa;
   font-weight: 600;
 }
 
 .search-result-item {
   padding: 12px;
-  background-color: #eef2ff;
+  background-color: #313244;
   border-radius: 8px;
-  border-left: 3px solid #4a6baf;
+  border-left: 3px solid #89b4fa;
 }
 
 .search-result-item h5 {
   margin: 0 0 8px 0;
-  color: #3a5495;
+  color: #89b4fa;
 }
 
 .search-result-item p {
   margin: 0 0 10px 0;
   font-size: 0.9rem;
-  color: #333;
+  color: #cdd6f4;
 }
 
 .result-link {
   display: inline-block;
-  color: #6c63ff;
+  color: #b4befe;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.85rem;
@@ -102,7 +102,8 @@
 
 /* For displaying JSON data */
 pre {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #cdd6f4;
   padding: 10px;
   border-radius: 8px;
   overflow-x: auto;
@@ -130,8 +131,8 @@ pre {
 }
 
 .thinking-section {
-  background-color: #f0f4ff;
-  border-left: 3px solid #8492c4;
+  background-color: #313244;
+  border-left: 3px solid #89b4fa;
   padding: 10px 15px;
   margin-bottom: 15px;
   border-radius: 6px;
@@ -140,7 +141,7 @@ pre {
 
 .thinking-section h4 {
   margin: 0 0 8px 0;
-  color: #5a6894;
+  color: #89b4fa;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -148,7 +149,7 @@ pre {
 .thinking-section p {
   font-style: italic;
   font-size: 0.9rem;
-  color: #5a6894;
+  color: #a6adc8;
   line-height: 1.4;
   margin: 0;
 }
