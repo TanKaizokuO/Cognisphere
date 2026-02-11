@@ -1,14 +1,11 @@
 import React from 'react';
-import Streamlit from '../../components/streamlit/Streamlit';
+import ChatBot from './ChatBot';
 import './styles/ChatDashboard.css';
 
 const ChatDashboard = () => {
   return (
     <div className="chatbot-page">
-      <Streamlit
-        page="Wellness_Chatbot"
-        title="Wellness Chatbot"
-      />
+      <ChatBot />
     </div>
   );
 };
