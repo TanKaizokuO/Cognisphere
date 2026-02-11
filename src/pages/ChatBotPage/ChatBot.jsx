@@ -7,10 +7,9 @@ const ChatBot = () => {
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState('chat'); // 'chat' or 'search'
   const messagesEndRef = useRef(null);
-  
-  // API URLs - you may need to adjust these based on your FastAPI server configuration
-  const API_BASE_URL = 'http://127.0.0.1:8000'; // Change this if your server is running on a different port/host
-  const API_SEARCH_URL = 'http://127.0.0.0:8000'
+
+  // API URLs - uses environment variable for deployment
+  const API_BASE_URL = import.meta.env.VITE_STREAMLIT_BACKEND_URL || 'http://127.0.0.1:8501';
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -22,23 +21,24 @@ const ChatBot = () => {
 
   const handleSend = async () => {
     if (input.trim() === '') return;
-    
+
     const userMessage = {
       text: input,
       sender: 'user',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
-    
+
     setMessages(prevMessages => [...prevMessages, userMessage]);
     setInput('');
     setLoading(true);
-    
+
     try {
-      let endpoint = mode === 'chat' ? 'http://127.0.0.1:8000/chat' : 'http://127.0.0.1:8000/api/search';
+      // Use Streamlit Wellness Chatbot endpoint
+      const endpoint = `${API_BASE_URL}/3_Wellness_Chatbot/api/chat`;
       let requestBody = mode === 'chat' ? { message: input } : { query: input };
-      
+
       console.log(`Sending request to ${endpoint}`, requestBody);
-      
+
       const response = await fetch(`${endpoint}`, {
         method: 'POST',
         headers: {
@@ -47,42 +47,42 @@ const ChatBot = () => {
         },
         body: JSON.stringify(requestBody),
       });
-      
+
       console.log('Response status:', response.status);
-      
+
       if (!response.ok) {
         console.error('Response error:', response.statusText);
         throw new Error(`Server responded with status: ${response.status}`);
       }
-      
+
       const data = await response.json();
       console.log('Received data:', data);
-      
+
       let botMessageText;
       if (mode === 'chat') {
         // For the chat endpoint, handle both response formats
-        botMessageText = typeof data.response === 'object' ? 
-          data.response.response || JSON.stringify(data.response) : 
+        botMessageText = typeof data.response === 'object' ?
+          data.response.response || JSON.stringify(data.response) :
           data.response;
       } else {
         // For search endpoint
         botMessageText = data.results || data;
       }
-      
+
       const botMessage = {
         text: botMessageText,
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         isSearch: mode === 'search'
       };
-      
+
       setMessages(prevMessages => [...prevMessages, botMessage]);
     } catch (error) {
       console.error('Error details:', error);
-      
+
       // Display a helpful error message based on the error
       let errorMsg = 'Sorry, there was an error processing your request.';
-      
+
       if (error.message.includes('Failed to fetch') || error.message.includes('Network Error')) {
         errorMsg = 'Unable to connect to the server. Please check if your FastAPI server is running.';
       } else if (error.message.includes('status: 404')) {
@@ -92,7 +92,7 @@ const ChatBot = () => {
       } else if (error.message.includes('status: 405')) {
         errorMsg = 'Method not allowed. Please verify API endpoint accepts POST requests.';
       }
-      
+
       const errorMessage = {
         text: errorMsg,
         sender: 'bot',
@@ -108,7 +108,7 @@ const ChatBot = () => {
     if (!results || results.length === 0) {
       return "No results found.";
     }
-    
+
     // This function returns search results as structured data
     // The actual JSX rendering happens in the MessageItem component
     return results;
@@ -130,13 +130,13 @@ const ChatBot = () => {
       <div className="chatbot-header">
         <h2>EduChat Assistant</h2>
         <div className="mode-toggle">
-          <button 
+          <button
             className={`mode-button ${mode === 'chat' ? 'active' : ''}`}
             onClick={() => toggleMode('chat')}
           >
             Chat
           </button>
-          <button 
+          <button
             className={`mode-button ${mode === 'search' ? 'active' : ''}`}
             onClick={() => toggleMode('search')}
           >
@@ -144,7 +144,7 @@ const ChatBot = () => {
           </button>
         </div>
       </div>
-      
+
       <div className="messages-container">
         {messages.length === 0 ? (
           <div className="welcome-message">
@@ -170,7 +170,7 @@ const ChatBot = () => {
         )}
         <div ref={messagesEndRef} />
       </div>
-      
+
       <div className="input-container">
         <textarea
           value={input}
@@ -179,8 +179,8 @@ const ChatBot = () => {
           placeholder={mode === 'chat' ? "Ask a question..." : "Search for resources..."}
           rows="1"
         />
-        <button 
-          className="send-button" 
+        <button
+          className="send-button"
           onClick={handleSend}
           disabled={loading || input.trim() === ''}
         >
@@ -197,7 +197,7 @@ const ChatBot = () => {
 // Component to render different message types
 const MessageItem = ({ message }) => {
   const { text, sender, timestamp, isSearch } = message;
-  
+
   if (sender === 'bot' && isSearch && Array.isArray(text)) {
     return (
       <div className="message bot-message search-results">
@@ -226,7 +226,7 @@ const MessageItem = ({ message }) => {
       </div>
     );
   }
-  
+
   return (
     <div className={`message ${sender === 'user' ? 'user-message' : 'bot-message'}`}>
       <div className="message-content">
