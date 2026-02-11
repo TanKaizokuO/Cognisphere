@@ -6,7 +6,7 @@ const ChatDashboard = () => {
   return (
     <div className="chatbot-page">
       <Streamlit
-        page="3_Wellness_Chatbot"
+        page="Wellness_Chatbot"
         title="Wellness Chatbot"
       />
     </div>
